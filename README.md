@@ -1,4 +1,4 @@
-seed-element
+viz-js
 ============
 
 See the [component page](http://polymerlabs.github.io/viz-js) for more information.
@@ -6,6 +6,10 @@ See the [component page](http://polymerlabs.github.io/viz-js) for more informati
 ## Getting Started
 
 We've put together a [guide to viz-js](http://www.polymer-project.org/docs/start/reusableelements.html) to help get you rolling.
+
+## Usage
+
+    <viz-js dotcontent="digraph G { start -> a0; start -> b0; }" format="svg" engine="dot"></viz-js>
 
 ## Testing Your Element
 
