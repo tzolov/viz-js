@@ -1,0 +1,7 @@
+{
+  "name": "viz-js#gh-pages",
+  "private": true,
+  "dependencies": {
+    "viz-js": "tzolov/viz-js#master"
+  }
+}

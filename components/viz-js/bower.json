@@ -1,0 +1,28 @@
+{
+  "name": "viz-js",
+  "version": "0.0.4",
+  "authors": [
+    "Christian Tzolov <christian.tzolov@gmail.com>"
+  ],
+  "description": "Element providing solution to render Graphviz on the web. Uses the https://github.com/mdaines/viz.js.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "viz-js",
+    "graphviz"
+  ],
+  "main": "viz-js.html",
+  "license": "MIT",
+  "homepage": "https://github.com/tzolov/viz-js/",
+  "ignore": [
+    "/.*",
+    "/tests/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.2"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^2.0.5"
+  }
+}
