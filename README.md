@@ -1,7 +1,7 @@
 viz-js
 ============
 
-See the [component page](http://polymerlabs.github.io/viz-js) for more information.
+See the [component page](http://tzolov.io/viz-js) for more information.
 
 ## Getting Started
 

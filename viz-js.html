@@ -11,16 +11,16 @@
 <script src="viz.js"></script>
 
 <!--
-Element providing solution to render Graphviz on the web. Uses the https://github.com/mdaines/viz.js/
+Element providing solution to render Graphviz on the web. Uses the https://github.com/mdaines/viz.js
 
 ##### Example
 
-    <viz-js dotcontent="digraph G { start -> a0; start -> b0; }" format="svg" engine="dot"></viz-js>
+    <viz-js dotcontent='digraph G { start -> a0; start -> b0; }' format='svg' engine='dot'></viz-js>
 
 @element viz-js
 @blurb Element providing solution to no problem in particular.
 @status alpha
-@homepage http://polymerlabs.github.io/viz-js
+@homepage http://tzolov.github.io/viz-js
 -->
 <polymer-element name="viz-js" attributes="dotcontent format engine">
 
@@ -33,18 +33,9 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
 
     Polymer({
       /**
-       * The `author` attribute sets an initial author
-       *
-       * @attribute author
-       * @type string
-       * @default 'Christian Tzolov'
-       */
-      author: 'Christian Tzolov',
-
-      /**
        * `dotcontent` is the string representation of the graph written in Dot language.
        *
-       * @property dotcontent
+       * @attribute dotcontent
        * @type string
        * @default ''
        */      
@@ -55,7 +46,7 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
        *          function is returned as a string, the only sane formats are "dot" and "svg". 
        *          Typically, one would use "svg" to display the rendered result.
        *
-       * @property format
+       * @attribute format
        * @type string
        * @default 'svg'
        */
@@ -65,17 +56,11 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
        * `engine` is the Graphviz layout engine to use. Can be any from "dot", "neato", 
        *          "circo", "twopi" or others. Usually, one is satisfied with "dot" or "neato".
        *
-       * @property engine
+       * @attribute engine
        * @type string
        * @default 'dot'
        */      
       engine: "dot",       	 
-
-      ready: function() {
-        // Ready is a lifecycle callback.
-        // You can do setup work in here.
-        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
-      },
 
       /**
        * The `fireLasers` method will fire the lasers. At least
