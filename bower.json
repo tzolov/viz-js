@@ -1,19 +1,20 @@
 {
-  "name": "seed-element",
-  "version": "0.0.0",
+  "name": "viz-js",
+  "version": "0.0.1",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Christian Tzolov <christian.tzolov@gmail.com>"
   ],
-  "description": "Element providing solution to no problem in particular.",
+  "description": "Element providing solution to render Graphviz on the web. Uses the https://github.com/mdaines/viz.js.",
   "keywords": [
     "web-component",
     "web-components",
     "polymer",
-    "seed"
+    "viz-js",
+    "graphviz"
   ],
-  "main": "seed-element.html",
+  "main": "viz-js.html",
   "license": "MIT",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "homepage": "https://github.com/tzolov/viz-js/",
   "ignore": [
     "/.*",
     "/tests/"
