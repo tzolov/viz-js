@@ -1,0 +1,96 @@
+<!--
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+<script src="viz.js"></script>
+
+<!--
+Element providing solution to render Graphviz on the web. Uses the https://github.com/mdaines/viz.js/
+
+##### Example
+
+    <viz-js></viz-js>
+
+@element viz-js
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://polymerlabs.github.io/viz-js
+-->
+<polymer-element name="viz-js" attributes="dotcontent format engine">
+
+  <template>
+    <link rel="stylesheet" href="viz-js.css">
+    
+	<div id="container"></div>
+  </template>
+
+  <script>
+
+    Polymer({
+      /**
+       * The `author` attribute sets an initial author
+       *
+       * @attribute author
+       * @type string
+       * @default 'Christian Tzolov'
+       */
+      author: 'Christian Tzolov',
+
+      /**
+       * `dotcontent` is the string representation of the graph written in Dot language.
+       *
+       * @property dotcontent
+       * @type string
+       * @default ''
+       */      
+      dotcontent: '',
+            
+      /**
+       * `format` is the graph output format in terms of dot-T. Since the result of the 
+       *          function is returned as a string, the only sane formats are "dot" and "svg". 
+       *          Typically, one would use "svg" to display the rendered result.
+       *
+       * @property format
+       * @type string
+       * @default svg
+       */
+      format: "svg",
+
+      /**
+       * `engine` is the Graphviz layout engine to use. Can be any from "dot", "neato", 
+       *          "circo", "twopi" or others. Usually, one is satisfied with "dot" or "neato".
+       *
+       * @property engine
+       * @type string
+       * @default dot
+       */      
+      engine: "dot",       	 
+
+      ready: function() {
+        // Ready is a lifecycle callback.
+        // You can do setup work in here.
+        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
+      },
+
+      /**
+       * The `fireLasers` method will fire the lasers. At least
+       * it will dispatch an event that claims lasers were fired :)
+       *
+       * @method dotcontentChanged
+       */      
+      dotcontentChanged: function() {
+      	if (!(!this.dotcontent || 0 === this.dotcontent.length)) {
+      	  this.$.container.innerHTML = Viz(this.dotcontent, this.format, this.engine);
+      	}
+      }
+    });
+
+  </script>
+
+</polymer-element>
