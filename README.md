@@ -1,11 +1,11 @@
 seed-element
 ============
 
-See the [component page](http://polymerlabs.github.io/seed-element) for more information.
+See the [component page](http://polymerlabs.github.io/viz-js) for more information.
 
 ## Getting Started
 
-We've put together a [guide to seed-element](http://www.polymer-project.org/docs/start/reusableelements.html) to help get you rolling.
+We've put together a [guide to viz-js](http://www.polymer-project.org/docs/start/reusableelements.html) to help get you rolling.
 
 ## Testing Your Element
 
@@ -21,7 +21,7 @@ Or other method using NodeJS:
 http-server ./
 ```
 
-This starts a web server on port 8000, so you can test your new element by navigating a browser to `localhost:8000/test/index.html`.
+This starts a web server on port 8000, so you can test your new element by navigating a browser to `localhost:8000/viz-js/demo.html`.
 
 ### web-component-tester
 
