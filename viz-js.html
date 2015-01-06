@@ -15,7 +15,7 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
 
 ##### Example
 
-    <viz-js></viz-js>
+    <viz-js dotcontent="digraph G { start -> a0; start -> b0; }" format="svg" engine="dot"></viz-js>
 
 @element viz-js
 @blurb Element providing solution to no problem in particular.
@@ -26,8 +26,7 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
 
   <template>
     <link rel="stylesheet" href="viz-js.css">
-    
-	<div id="container"></div>
+    <div id="container"></div>
   </template>
 
   <script>
@@ -58,7 +57,7 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
        *
        * @property format
        * @type string
-       * @default svg
+       * @default 'svg'
        */
       format: "svg",
 
@@ -68,7 +67,7 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
        *
        * @property engine
        * @type string
-       * @default dot
+       * @default 'dot'
        */      
       engine: "dot",       	 
 
