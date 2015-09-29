@@ -22,9 +22,9 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
 @homepage http://tzolov.github.io/viz-js
 -->
 <style>
-#container {
-    width: 100%;
-}
+	#container {
+		width: 100%;
+	}
 </style>
 <dom-module id="viz-js">
     <polymer-element name="viz-js">
@@ -86,10 +86,7 @@ Polymer({
      */
     dotcontentChanged: function() {
         if (!(!this.dotcontent || 0 === this.dotcontent.length)) {
-            var options = {};
-            options.format = this.format;
-            options.engine = this.engine;
-            this.$.container.innerHTML = Viz(this.dotcontent, options);
+            this.$.container.innerHTML = Viz(this.dotcontent, this.format, this.engine);
             this.fire('graph-ready');
         }
     }
