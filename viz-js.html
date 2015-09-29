@@ -21,6 +21,11 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
 @status alpha
 @homepage http://tzolov.github.io/viz-js
 -->
+<style>
+#container {
+    width: 100%;
+}
+</style>
 <dom-module id="viz-js">
     <polymer-element name="viz-js">
         <template>
@@ -81,7 +86,10 @@ Polymer({
      */
     dotcontentChanged: function() {
         if (!(!this.dotcontent || 0 === this.dotcontent.length)) {
-            this.$.container.innerHTML = Viz(this.dotcontent, this.format, this.engine);
+            var options = {};
+            options.format = this.format;
+            options.engine = this.engine;
+            this.$.container.innerHTML = Viz(this.dotcontent, options);
             this.fire('graph-ready');
         }
     }
