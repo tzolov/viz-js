@@ -82,6 +82,7 @@ Polymer({
     dotcontentChanged: function() {
         if (!(!this.dotcontent || 0 === this.dotcontent.length)) {
             this.$.container.innerHTML = Viz(this.dotcontent, this.format, this.engine);
+            this.fire('graph-ready');
         }
     }
 });
