@@ -1,8 +1,9 @@
 {
   "name": "viz-js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "authors": [
-    "Christian Tzolov <christian.tzolov@gmail.com>"
+    "Christian Tzolov <christian.tzolov@gmail.com>",
+    "Roman Kaufmann <roman.kaufmann.at@gmail.com"
   ],
   "description": "Element providing solution to render Graphviz on the web. Uses the https://github.com/mdaines/viz.js.",
   "keywords": [
