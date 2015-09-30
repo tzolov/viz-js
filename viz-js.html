@@ -8,6 +8,8 @@
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-image/iron-image.html">
 <script src="viz.js"></script>
 <!--
 Element providing solution to render Graphviz on the web. Uses the https://github.com/mdaines/viz.js
@@ -21,17 +23,22 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
 @status alpha
 @homepage http://tzolov.github.io/viz-js
 -->
-<style>
-	#container {
-		width: 100%;
-	}
-</style>
 <dom-module id="viz-js">
-    <polymer-element name="viz-js">
-        <template>
-            <link rel="stylesheet" href="viz-js.css">
-            <div id="container"></div>
-        </template>
+    <style>
+    iron-image {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    iron-image::content img {
+        max-width: 100%;
+        height: auto;
+    }
+    </style>
+    <template>
+        <link rel="stylesheet" href="viz-js.css">
+        <iron-image src="[[image]]"></iron-image>
+    </template>
 </dom-module>
 <script>
 Polymer({
@@ -75,6 +82,9 @@ Polymer({
         engine: {
             type: String,
             value: "dot"
+        },
+        image: {
+            type: String
         }
     },
 
@@ -86,7 +96,8 @@ Polymer({
      */
     dotcontentChanged: function() {
         if (!(!this.dotcontent || 0 === this.dotcontent.length)) {
-            this.$.container.innerHTML = Viz(this.dotcontent, this.format, this.engine);
+            //this.$.container.innerHTML = Viz(this.dotcontent, this.format, this.engine);
+            this.image = "data:image/svg+xml;charset=UTF-8," + Viz(this.dotcontent, this.format, this.engine);
             this.fire('graph-ready');
         }
     }
