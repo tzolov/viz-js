@@ -9,28 +9,28 @@
 -->
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>viz-js Demo</title>
-
     <!-- 1. Load platform support before any code that touches the DOM. -->
     <script src="../webcomponentsjs/webcomponents.js"></script>
     <!-- 2. Load the component using an HTML Import -->
     <link rel="import" href="viz-js.html">
-  </head>
+</head>
 
-  <body unresolved>	
-	
-	<textarea id="dot" style="width:600px;height:100px;">digraph G {	start -> a0; start -> b0;	a1 -> b3;	b2 -> a3;	a3 -> a0;	a3 -> end;	b3 -> end;	start [shape=Mdiamond]; 	end [shape=Msquare];}</textarea><br/>
-	
-	<button onclick="draw()">Draw</button>
- 	
- 	<viz-js dotcontent="digraph G {	start -> a0; start -> b0;	}"></viz-js>
+<body unresolved>
+    <textarea id="dot" style="width:600px;height:100px;">digraph G { start -> a0; start -> b0; a1 -> b3; b2 -> a3; a3 -> a0; a3 -> end; b3 -> end; start [shape=Mdiamond]; end [shape=Msquare];}</textarea>
+    <br/>
+    <button onclick="draw()">Draw</button>
+    <div>
+        <viz-js dotcontent="digraph G { start -> a0; start -> b0; }"></viz-js>
+    </div>
+    <script>
+    function draw() {
+        document.getElementsByTagName('viz-js')[0].dotcontent = document.getElementById('dot').value;
+    }
+    </script>
+</body>
 
-	<script>
-	  function draw() {
-	    document.getElementsByTagName('viz-js')[0].dotcontent = document.getElementById('dot').value;
-	  }
-	</script>
-  </body>
 </html>
