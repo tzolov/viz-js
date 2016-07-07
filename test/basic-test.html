@@ -18,35 +18,23 @@
   <script src="../../web-component-tester/browser.js"></script>
 
   <!-- Step 1: import the element to test -->
-  <link rel="import" href="../seed-element.html">
+  <link rel="import" href="../viz-js.html">
 </head>
 <body>
 
   <!-- You use the document as a place to set up your fixtures. -->
-  <seed-element></seed-element>
+  <viz-js format="svg" engine="dot"></viz-js>
 
   <script>
-    var myEl = document.querySelector('seed-element');
+    var myEl = document.querySelector('viz-js');
 
-    suite('<seed-element>', function() {
+    suite('<viz-js>', function() {
 
-      test('defines the "author" property', function() {
-        assert.equal(myEl.author, 'Dimitri Glazkov');
-      });
-
-      test('says hello', function() {
-        assert.equal(myEl.sayHello(), 'seed-element says, Hello World!');
-
-        var greetings = myEl.sayHello('greetings Earthlings');
-        assert.equal(greetings, 'seed-element says, greetings Earthlings');
-      });
-
-      test('fires lasers', function(done) {
-        myEl.addEventListener('seed-element-lasers-success', function(event) {
-          assert.equal(event.detail.sound, 'Pew pew pew!');
+      test('check event', function(done) {
+        myEl.addEventListener('graph-ready', function(event) {
           done();
         });
-        myEl.fireLasers();
+        myEl.dotcontent = "digraph G { start -> a0; start -> b0; }";
       });
 
     });

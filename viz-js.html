@@ -8,8 +8,9 @@
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../polymer/polymer.html">
-<script src="viz.js"></script>
-
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<script src="../viz.js/viz.js"></script>
 <!--
 Element providing solution to render Graphviz on the web. Uses the https://github.com/mdaines/viz.js
 
@@ -19,61 +20,86 @@ Element providing solution to render Graphviz on the web. Uses the https://githu
 
 @element viz-js
 @blurb Element providing solution to no problem in particular.
-@status alpha
+@demo demo/index.html
 @homepage http://tzolov.github.io/viz-js
 -->
-<polymer-element name="viz-js" attributes="dotcontent format engine">
+<dom-module id="viz-js">
+    <style>
+    iron-image {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    iron-image::content img {
+        max-width: 100%;
+        height: auto;
+    }
+    </style>
+    <template>
+        <link rel="stylesheet" href="viz-js.css">
+        <iron-image src="[[image]]"></iron-image>
+    </template>
+</dom-module>
+<script>
+Polymer({
+    is: 'viz-js',
+    properties: {
+        /**
+         * `dotcontent` is the string representation of the graph written in Dot language.
+         *
+         * @attribute dotcontent
+         * @type string
+         * @default ''
+         */
+        dotcontent: {
+            type: String,
+            value: '',
+            observer: 'dotcontentChanged'
+        },
 
-  <template>
-    <link rel="stylesheet" href="viz-js.css">
-    <div id="container"></div>
-  </template>
+        /**
+         * `format` is the graph output format in terms of dot-T. Since the result of the 
+         *          function is returned as a string, the only sane formats are "dot" and "svg". 
+         *          Typically, one would use "svg" to display the rendered result.
+         *
+         * @attribute format
+         * @type string
+         * @default 'svg'
+         */
+        format: {
+            type: String,
+            value: "svg"
+        },
 
-  <script>
+        /**
+         * `engine` is the Graphviz layout engine to use. Can be any from "dot", "neato", 
+         *          "circo", "twopi" or others. Usually, one is satisfied with "dot" or "neato".
+         *
+         * @attribute engine
+         * @type string
+         * @default 'dot'
+         */
+        engine: {
+            type: String,
+            value: "dot"
+        },
+        image: {
+            type: String
+        }
+    },
 
-    Polymer({
-      /**
-       * `dotcontent` is the string representation of the graph written in Dot language.
-       *
-       * @attribute dotcontent
-       * @type string
-       * @default ''
-       */      
-      dotcontent: '',
-            
-      /**
-       * `format` is the graph output format in terms of dot-T. Since the result of the 
-       *          function is returned as a string, the only sane formats are "dot" and "svg". 
-       *          Typically, one would use "svg" to display the rendered result.
-       *
-       * @attribute format
-       * @type string
-       * @default 'svg'
-       */
-      format: "svg",
-
-      /**
-       * `engine` is the Graphviz layout engine to use. Can be any from "dot", "neato", 
-       *          "circo", "twopi" or others. Usually, one is satisfied with "dot" or "neato".
-       *
-       * @attribute engine
-       * @type string
-       * @default 'dot'
-       */      
-      engine: "dot",       	 
-
-      /**
-       * The `dotcontentChanged` method renders the diagram when the dotcontent attribute is updated.
-       *
-       * @method dotcontentChanged
-       */      
-      dotcontentChanged: function() {
-      	if (!(!this.dotcontent || 0 === this.dotcontent.length)) {
-      	  this.$.container.innerHTML = Viz(this.dotcontent, this.format, this.engine);
-      	}
-      }
-    });
-
-  </script>
-
-</polymer-element>
+    /**
+     * The `fireLasers` method will fire the lasers. At least
+     * it will dispatch an event that claims lasers were fired :)
+     *
+     * @method dotcontentChanged
+     */
+    dotcontentChanged: function() {
+        if (!(!this.dotcontent || 0 === this.dotcontent.length)) {
+            //this.$.container.innerHTML = Viz(this.dotcontent, this.format, this.engine);
+            this.image = "data:image/svg+xml;charset=UTF-8," + Viz(this.dotcontent, this.format, this.engine);
+            this.fire('graph-ready');
+        }
+    }
+});
+</script>
